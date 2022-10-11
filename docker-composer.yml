@@ -10,7 +10,7 @@ services:
     depends_on:
       - nginx
     network_mode: host
-    network: trojan
+    #network: trojan
 
   nginx:
       image: sjus4fun/nginx:0.5
@@ -26,4 +26,4 @@ services:
       stdin_open: true
       tty: true
       network_mode: host
-      network: trojan
+      #network: trojan
