@@ -108,7 +108,7 @@ function init_setting() {
 }
 
 function install_frontend() {
-	cd /opt/frontend && git clone https://github.com/BobCoderS9/SSPanel-Metron.git sspaenl && cd $frontendDir 
+	cd /opt/frontend && git clone https://github.com/BobCoderS9/SSPanel-Metron.git sspanel && cd $frontendDir 
 	frontend_setting
 	docker exec -i php sh -c 'exec php xcat Tool initQQWry'
 }
@@ -156,7 +156,7 @@ function front_oneclick(){
 	LOGI 前端一键开始
 	init
 	install_frontend
-	certPath=$frontendDir/cert
+	certPath=$frontendDir/nginx/cert
 	apply_certification $certPath
 	docker compose up 
 }
@@ -165,7 +165,7 @@ function backend_oneclick(){
 	LOGI 后端一键开始
 	init
 	install_xrayr
-	certPath=$backendDir/cert
+	certPath=$backendDir/nginx/cert
 	apply_certification $certPath
 	docker compose up 
 }
