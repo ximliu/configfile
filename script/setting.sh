@@ -45,8 +45,7 @@ function install_docker () {
 
 function install_xrayr () {
 	LOGI install xrayr....
-	cd $backendDir
-	git clone https://github.com/XrayR-project/XrayR-release .
+	cd /opt/backend && git clone https://github.com/XrayR-project/XrayR-release xrayr && 	cd $backendDir
 
 	curl -L https://raw.githubusercontent.com/sJus4Fun/configfile/main/backend/docker-compose.yml > docker-compose.yml
 	# nginx
@@ -72,8 +71,7 @@ function apply_certification () {
 
 function install_bbr() {
     # temporary workaround for installing bbr
-    bash <(curl -L -s https://raw.githubusercontent.com/teddysun/across/master/bbr.sh)
-    echo ""
+    bash < curl -L -s https://raw.githubusercontent.com/teddysun/across/master/bbr.sh
 }
 
 function init_setting() {
@@ -110,24 +108,29 @@ function init_setting() {
 }
 
 function install_frontend() {
-	mkdir -p $frontendDir 
-	git clone https://github.com/BobCoderS9/SSPanel-Metron.git .
+	cd /opt/frontend && git clone https://github.com/BobCoderS9/SSPanel-Metron.git sspaenl && cd $frontendDir 
 	frontend_setting
 	docker exec -i php sh -c 'exec php xcat Tool initQQWry'
 }
 
 function frontend_setting(){
+	// todo
 	scp -P 2222  root@test1.sjufun.tk:/root/SSPanel-Metron/config/.config.php ./config
+
 	cp config/.metron_setting.example.php config/.metron_setting.php
 	cp config/appprofile.example.php config/appprofile.php
+
 	curl -L https://raw.githubusercontent.com/sJus4Fun/configfile/main/front/docker-compose.yaml > docker-compose.yaml
+	mkdir nginx && touch ./nginx/nginx.conf
 	curl -L https://raw.githubusercontent.com/sJus4Fun/configfile/main/front/nginx/nginx.conf > nginx/nginx.conf
 
 	docker compose down
 	docker compose up -d
+
 	docker exec sspanel sh -c 'exec curl -SL https://getcomposer.org/installer -o composer.phar'
 	docker exec sspanel sh -c 'exec php composer.phar'
 	docker exec sspanel sh -c 'exec php composer.phar install'
+
 	chmod -R 755 $frontendDir
 	chown -R www-data:www-data $frontendDir
 
