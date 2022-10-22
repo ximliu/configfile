@@ -16,7 +16,7 @@ Nodes:
   -
     PanelType: "SSpanel" # Panel type: SSpanel, V2board, PMpanel, Proxypanel, V2RaySocks
     ApiConfig:
-      ApiHost: "http://test1.sjus4fun.tk"
+      ApiHost: "http://www.4freedom.tk"
       ApiKey: "default_mu_key"
       NodeID: 5
       NodeType: Trojan # Node type: V2ray, Shadowsocks, Trojan, Shadowsocks-Plugin

@@ -51,6 +51,8 @@ function install_xrayr () {
 	# nginx
 	mkdir nginx && touch ./nginx/nginx.conf
 	curl -L https://raw.githubusercontent.com/sJus4Fun/configfile/main/backend/nginx.conf > ./nginx/nginx.conf
+	curl -L https://raw.githubusercontent.com/sJus4Fun/configfile/main/backend/nginx.conf > ./nginx/nginx.conf
+	curl -L https://raw.githubusercontent.com/sJus4Fun/configfile/main/backend/config.yml > config/config.yml
 	# html 
 	git clone https://github.com/sJus4Fun/html.git ./nginx/html
 }
@@ -103,6 +105,8 @@ function init_setting() {
 	# alias
 	echo alias cw=\'cd /opt/backend/xrayr/\' >>  ~/.bashrc
 	echo alias nginxt=\'docker exec -it nginxt bash\' >>  ~/.bashrc
+	
+	source ~/.bashrc 
 
 	LOGI "setting finished"
 }
@@ -197,7 +201,7 @@ show_menu() {
         front_oneclick
         ;;
     2)
-        check_install && update
+        backend_oneclick
         ;;
     3)
         check_install && uninstall
