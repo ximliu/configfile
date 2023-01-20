@@ -16,10 +16,10 @@ Nodes:
   -
     PanelType: "SSpanel" # Panel type: SSpanel, V2board, PMpanel, Proxypanel, V2RaySocks
     ApiConfig:
-      ApiHost: "http://www.4freedom.tk"
-      ApiKey: "default_mu_key"
-      NodeID: 5
-      NodeType: Trojan # Node type: V2ray, Shadowsocks, Trojan, Shadowsocks-Plugin
+      ApiHost: "https://www..tk"
+      ApiKey: "8db6d8db159cddf8"
+      NodeID: 7
+      NodeType: V2ray  # Node type: V2ray, Shadowsocks, Trojan, Shadowsocks-Plugin
       Timeout: 30 # Timeout for the api request
       EnableVless: false # Enable Vless for V2ray Type
       EnableXTLS: false # Enable XTLS for V2ray and Trojan
@@ -27,13 +27,13 @@ Nodes:
       DeviceLimit: 0 # Local settings will replace remote settings, 0 means disable
       RuleListPath: # /etc/XrayR/rulelist Path to local rulelist file
     ControllerConfig:
-      ListenIP: 127.0.0.1 # IP address you want to listen
+      ListenIP: 0.0.0.0 # IP address you want to listen
       SendIP: 0.0.0.0 # IP address you want to send pacakage
       UpdatePeriodic: 60 # Time to update the nodeinfo, how many sec.
       EnableDNS: false # Use custom DNS config, Please ensure that you set the dns.json well
       DNSType: AsIs # AsIs, UseIP, UseIPv4, UseIPv6, DNS strategy
-      EnableProxyProtocol: true # Only works for WebSocket and TCP
-      EnableFallback: true # Only support for Trojan and Vless
+      EnableProxyProtocol: false # Only works for WebSocket and TCP
+      EnableFallback: false # Only support for Trojan and Vless
       FallBackConfigs:  # Support multiple fallbacks
         -
           SNI: # TLS SNI(Server Name Indication), Empty for any
@@ -55,7 +55,7 @@ Nodes:
   #   ApiConfig:
   #     ApiHost: "http://127.0.0.1:668"
   #     ApiKey: "123"
-  #     NodeID: 4
+  #     NodeID 7
   #     NodeType: Shadowsocks # Node type: V2ray, Shadowsocks, Trojan
   #     Timeout: 30 # Timeout for the api request
   #     EnableVless: false # Enable Vless for V2ray Type
